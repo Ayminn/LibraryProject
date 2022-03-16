@@ -72,5 +72,16 @@ namespace LibraryProject.Api.Repositories
             }
             return updateAuthor;
         }
+
+        public async Task<Author> DeleteAuthorById(int authorId)
+        {
+            Author deleteAuthor = await _context.Author.FirstOrDefaultAsync(author => author.Id == authorId);
+            if (deleteAuthor != null)
+            {
+                _context.Author.Remove(deleteAuthor);
+                await _context.SaveChangesAsync();
+            }
+            return deleteAuthor;
+        }
     }
 }
