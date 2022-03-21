@@ -13,6 +13,9 @@ namespace LibraryProject.Api.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
+
+        //Her har vi lavet en dependency injection. Da vi klare databehandling i SERVICE, kan vi injecte funktionen(GetAllAuthors), så controlleren kun sender data ud.
+
         private readonly IAuthorService _authorService;
 
         public AuthorController(IAuthorService authorService)

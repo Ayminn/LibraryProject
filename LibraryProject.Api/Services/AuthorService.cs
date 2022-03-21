@@ -25,26 +25,6 @@ namespace LibraryProject.Api.Services
         public async Task<List<AuthorResponse>> GetAllAuthors()
         {
             List<Author> authors = await _authorRepository.SelectAllAuthors();
-            //authors.Add(new()
-            //{
-            //    Id = 1,
-            //    FirstName = "Test",
-            //    LastName = "Test",
-            //    MiddleName = "Test",
-            //    BirthYear = 2022,
-            //    YearOfDeath = 2222
-            //});
-            //authors.Add(new()
-            //{
-            //    Id = 2,
-            //    FirstName = "Test2",
-            //    LastName = "Test2",
-            //    MiddleName = "Test2",
-            //    BirthYear = 2022,
-            //    YearOfDeath = 2222
-            //});
-            //return authors;
-
 
             return authors.Select(author => new AuthorResponse
             {
