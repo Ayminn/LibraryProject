@@ -5,6 +5,7 @@ namespace LibraryProject.Api.Database
 {
     public class LibraryProjectContext : DbContext
     {
+        public LibraryProjectContext() { }
         public LibraryProjectContext(DbContextOptions<LibraryProjectContext> options) : base(options) { }
 
         public DbSet<Author> Author { get; set; }

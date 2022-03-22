@@ -38,10 +38,10 @@ namespace LibraryProject.Api.Controllers
                 {
                     return NoContent();
                 }
-
-
-                return Ok(authors);
-
+                else
+                {
+                    return Ok(authors);
+                }
             }
             catch (Exception ex)
             {
