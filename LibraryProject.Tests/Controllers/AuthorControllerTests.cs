@@ -73,22 +73,7 @@ namespace LibraryProject.Tests.Controllers
             Assert.Equal(204, statusCodeResult.StatusCode);
         }
 
-        [Fact]
-        public async void GetAll_ShouldReturnStatusCode500_WhenNULLAuthorsExist()
-        {
-            // Arrange
-            _mockAuthorService
-                .Setup(x => x.GetAllAuthors())
-                .ReturnsAsync(() => null);
-
-            // Act
-            var result = await _authorController.GetAll();
-
-            // Assert
-            var statusCodeResult = (IStatusCodeActionResult)result;
-
-            Assert.Equal(500, statusCodeResult.StatusCode);
-        }
+       
 
         [Fact]
         public async void GetAll_ShouldReturnStatusCode500_WhenExceptionIsRaised()
@@ -103,6 +88,25 @@ namespace LibraryProject.Tests.Controllers
 
             // Assert
             var statusCodeResult = (IStatusCodeActionResult)result;
+            Assert.Equal(500, statusCodeResult.StatusCode);
+        }
+
+        [Fact]
+        public async void GetAll_ShouldReturnStatusCode500_WhenNULLAuthorsExist()
+        {
+            List<AuthorResponse> authors = new();
+
+            // Arrange
+            _mockAuthorService
+                .Setup(x => x.GetAllAuthors())
+                .ReturnsAsync(() => null);
+
+            // Act
+            var result = await _authorController.GetAll();
+
+            // Assert
+            var statusCodeResult = (IStatusCodeActionResult)result;
+
             Assert.Equal(500, statusCodeResult.StatusCode);
         }
     }
