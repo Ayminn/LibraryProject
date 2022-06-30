@@ -97,7 +97,7 @@ namespace LibraryProject.Tests.Repositories
             await _context.SaveChangesAsync();
 
             // Act
-            var result = await _authorRepository.SelectAuthorsById(authorId);
+            var result = await _authorRepository.SelectAuthorById(authorId);
 
             // Assert
             Assert.NotNull(result);
@@ -112,7 +112,7 @@ namespace LibraryProject.Tests.Repositories
             await _context.Database.EnsureDeletedAsync();
 
             // Act
-            var result = await _authorRepository.SelectAuthorsById(1);
+            var result = await _authorRepository.SelectAuthorById(1);
 
             // Assert
             Assert.Null(result);
@@ -257,7 +257,7 @@ namespace LibraryProject.Tests.Repositories
 
             // Act
             var result = await _authorRepository.DeleteAuthorById(authorId);
-            var author = await _authorRepository.SelectAuthorsById(authorId);
+            var author = await _authorRepository.SelectAuthorById(authorId);
 
             // Assert
             Assert.NotNull(result);
