@@ -11,11 +11,7 @@ namespace LibraryProject.Api.Repositories
     public interface IAuthorRepository
     {
         Task<List<Author>> SelectAllAuthors();
-        Task<Author> SelectAuthorsById(int authorId);
-        Task<Author> InsertNewAuthor(Author author);
-        Task<Author> UpdateExistingAuthor(int authorId, Author author);
-        Task<Author> DeleteAuthor(int authorId);
-    }
+q    }
     public class AuthorRepository : IAuthorRepository
     {
         private readonly LibraryProjectContext _context;
@@ -49,39 +45,7 @@ namespace LibraryProject.Api.Repositories
         {
             return await _context.Author.ToListAsync();
         }
-
-        public async Task<Author> SelectAuthorsById(int authorId)
-        {
-            return await _context.Author
-                .FirstOrDefaultAsync(author => author.Id == authorId);
-        }
-
-        public async Task<Author> UpdateExistingAuthor(int authorId, Author author)
-        {
-            Author updateAuthor = await _context.Author
-                .FirstOrDefaultAsync(author => author.Id == authorId);
-            if (updateAuthor != null)
-            {
-                updateAuthor.FirstName = author.FirstName;
-                updateAuthor.LastName = author.LastName;
-                updateAuthor.MiddleName = author.MiddleName;
-                updateAuthor.BirthYear = author.BirthYear;
-                updateAuthor.YearOfDeath = author.YearOfDeath;
-
-                await _context.SaveChangesAsync();
-            }
-            return updateAuthor;
-        }
-
-        public async Task<Author> DeleteAuthorById(int authorId)
-        {
-            Author deleteAuthor = await _context.Author.FirstOrDefaultAsync(author => author.Id == authorId);
-            if (deleteAuthor != null)
-            {
-                _context.Author.Remove(deleteAuthor);
-                await _context.SaveChangesAsync();
-            }
-            return deleteAuthor;
-        }
     }
+
+
 }
