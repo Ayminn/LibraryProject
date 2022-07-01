@@ -19,13 +19,19 @@ namespace LibraryProject.Api.Services
 
     public class AuthorService : IAuthorService
     {
+        //From AuthorServiceTests
         private readonly IAuthorRepository _authorRepository;
+        public IAuthorService Object { get; }
 
         public AuthorService(IAuthorRepository authorRepository)
         {
             _authorRepository = authorRepository;
         }
- 
+
+        public AuthorService(IAuthorService @object)
+        {
+            Object = @object;
+        }
 
         public async Task<List<AuthorResponse>> GetAllAuthors()
         {

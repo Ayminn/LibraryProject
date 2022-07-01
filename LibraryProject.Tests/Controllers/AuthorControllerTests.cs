@@ -73,8 +73,6 @@ namespace LibraryProject.Tests.Controllers
             Assert.Equal(204, statusCodeResult.StatusCode);
         }
 
-       
-
         [Fact]
         public async void GetAll_ShouldReturnStatusCode500_WhenExceptionIsRaised()
         {
